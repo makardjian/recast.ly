@@ -8,11 +8,16 @@ class App extends React.Component {
   constructor(props) {
     // Equivalent to ES5's React.Component.call(this, props)
     super(props);
+    
+    this.state = {
+      current: exampleVideoData[0]
+    };
   }
   
-  onClickFunction(event) {
-    console.log(event);
-    //source the video that's clicked 
+  onClickFunction(event, video) {
+    this.setState({
+      current: video
+    });
   }
 
   // Every class component must have a `render` method
@@ -30,7 +35,7 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer video={exampleVideoData[0]}/>
+            <VideoPlayer video={this.state.current}/>
           </div>
           <div className="col-md-5">
             <VideoList videos={exampleVideoData} videoClick={this.onClickFunction.bind(this)}/>
