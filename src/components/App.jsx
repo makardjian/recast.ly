@@ -3,19 +3,37 @@ import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
 import exampleVideoData from '/src/data/exampleVideoData.js';
 
+
 class App extends React.Component {
   
   constructor(props) {
     // Equivalent to ES5's React.Component.call(this, props)
     super(props);
-    
+
     this.state = {
       current: exampleVideoData[0],
-      videoList: exampleVideoData
+      videoList: exampleVideoData 
+      
     };
+    
   }
   
+  getData(data) {
+    this.setState({
+      current: data[0],
+      videoList: data 
+    });
+    
+  }
+  
+  componentDidMount(prevProps) {
+    this.props.searchYouTube({},this.getData.bind(this));
+  }
+  
+  
   onClickFunction(event, video) {
+    event.preventDefault();
+    
     this.setState({
       current: video
     });
