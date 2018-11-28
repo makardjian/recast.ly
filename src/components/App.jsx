@@ -38,6 +38,17 @@ class App extends React.Component {
       current: video
     });
   }
+  
+  onSearchClick(text) {
+    event.preventDefault();
+    this.props.searchYouTube({'query': text},this.getData.bind(this));
+
+  }
+  
+  onSearchChange(text) {
+    event.preventDefault();
+    this.props.searchYouTube({'query': text},this.getData.bind(this));
+  }
 
   // Every class component must have a `render` method
   // Stateless functional components are pretty much just this method
@@ -49,7 +60,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search/>
+            <Search searchClick={this.onSearchClick.bind(this)} searchChange={this.onSearchChange.bind(this)}/>
           </div>
         </nav>
         <div className="row">
