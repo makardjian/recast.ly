@@ -10,7 +10,8 @@ class App extends React.Component {
     super(props);
     
     this.state = {
-      current: exampleVideoData[0]
+      current: exampleVideoData[0],
+      videoList: exampleVideoData
     };
   }
   
@@ -38,7 +39,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.current}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={exampleVideoData} videoClick={this.onClickFunction.bind(this)}/>
+            <VideoList videos={this.state.videoList} videoClick={this.onClickFunction.bind(this)}/>
           </div>
         </div>
       </div>
