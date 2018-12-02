@@ -32,21 +32,17 @@ class App extends React.Component {
   
   
   onClickFunction(event, video) {
-    event.preventDefault();
-    
     this.setState({
       current: video
     });
   }
   
   onSearchClick(text) {
-    event.preventDefault();
     this.props.searchYouTube({'query': text},this.getData.bind(this));
 
   }
   
   onSearchChange(text) {
-    event.preventDefault();
     this.props.searchYouTube({'query': text},this.getData.bind(this));
   }
 
